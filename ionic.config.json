@@ -1,0 +1,7 @@
+{
+  "name": "BounceOffCards",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
