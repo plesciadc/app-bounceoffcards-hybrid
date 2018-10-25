@@ -1,0 +1,13 @@
+[card-generator-cell] {
+    height: 12vh;
+    background-image: url("../../assets/images/red-circle.png");
+    background-size: 12vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+[generate-button] {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

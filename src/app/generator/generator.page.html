@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Card Generator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [scrollY]="false">
+  <!--ion-grid is collapsed. It does not contain any static content. Just containers for the red indicators.-->
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[0] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[1] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[2] ? red : white">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[3] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[4] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[5] ? red : white">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[6] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[7] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[8] ? red : white">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[9] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[10] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[11] ? red : white">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[12] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[13] ? red : white">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div card-generator-cell [style.background-image]="cells[14] ? red : white">
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button generate-button (click)="generateTapped()">Generate Card</ion-button>
+
+</ion-content>
