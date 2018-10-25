@@ -1,16 +1,29 @@
 import { Component } from '@angular/core';
+import { Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-generator',
   templateUrl: 'generator.page.html',
   styleUrls: ['generator.page.scss']
 })
+
 export class GeneratorPage {
 
-  // Define cells array to track status of each circle
+  // Initialize events reciever and subscribe to events from the settings page
+  constructor(public events: Events) {
+    events.subscribe('setting:changed', (setting, value) => {
+      // This code will run when settings are updated
+      console.log('Setting', setting, 'changed to: ', value);
+      this.difficultyValue = value;
+    });
+  }
+
+  // Define variables
   cells = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+  lastCells = [];
   red = 'url("../../assets/images/red-circle.png")';
   white = 'url("../../assets/images/white-circle.png")';
+  difficultyValue = 5;
 
   generateTapped() {
     var redCount = 0;
@@ -19,16 +32,36 @@ export class GeneratorPage {
       if (random_boolean) {
         redCount++;
       }
-      if (redCount >= 8) {
+      if (redCount > this.difficultyValue) {
         this.cells[i] = false;
       } else {
         this.cells[i] = random_boolean;
       }
     }
+    // Loop over the cells to make sure there arent any random outliers
     for (var i = 0; i < this.cells.length; i++) {
       this.checkAdjacentCells(i);
     }
+    // One last loop to check that at least two cells are red and were not matching the same pattern from the last run
+    if (!this.checkTrueCells() || this.cells == this.lastCells) {
+      // Restart the generateTapped() method because there were no good cells returned
+      this.generateTapped();
+    }
+    this.lastCells = this.cells;
+  }
 
+  checkTrueCells() : boolean {
+    var trueCells = 0;
+    for (let cell of this.cells) {
+      if (cell) {
+        trueCells ++;
+      }
+    }
+    if (trueCells >= 2) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   checkAdjacentCells(cellToCheck) {

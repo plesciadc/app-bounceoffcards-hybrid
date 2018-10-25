@@ -6,18 +6,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>
-      <ion-label>
-        Follow us on Twitter
-      </ion-label>
-    </ion-list-header>
-    <ion-item>
-      <ion-label>
-        <ion-icon name="logo-ionic" slot="start"></ion-icon>
-        @ionicframework
-      </ion-label>
-    </ion-item>
-  </ion-list>
+<ion-content [scrollY]="false">
+    <ion-list>
+        <ion-list-header style="padding: 10px;">
+          Number of Balls
+        </ion-list-header>
+        <ion-item>
+            <ion-range pin="true" value="5" min="2" max="8" [(ngModel)]="difficultyValue" (ngModelChange)="difficultyChanged()"></ion-range>
+            <div slot="end">{{difficultyValue}}</div>
+          </ion-item>
+      </ion-list>
+    
 </ion-content>
